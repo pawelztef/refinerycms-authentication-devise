@@ -1,4 +1,4 @@
-# Refinery CMS Authentication Extension for Devise [![Build Status](https://travis-ci.org/refinery/refinerycms-authentication-devise.svg?branch=master)](https://travis-ci.org/refinery/refinerycms-authentication-devise)
+# Refinery CMS Authentication Extension for Devise 
 
 This extension allows you to use Devise with Refinery CMS 4.0 and later.
 
