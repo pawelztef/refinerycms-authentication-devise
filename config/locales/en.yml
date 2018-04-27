@@ -1,4 +1,9 @@
 en:
+  editing_personal_details: Edit personal details
+  listing_users: Users
+  login_to_continue: Login to continue
+  login: Login
+  password: Password
   refinery:
     plugins:
       refinery_authentication_devise:
