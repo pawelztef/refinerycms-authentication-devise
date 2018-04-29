@@ -4,6 +4,13 @@ en:
   login_to_continue: Login to continue
   login: Login
   password: Password
+  no_results: No results
+  username: Username
+  full_name: Full name
+  email: Email
+  added_at: Created at
+  actions: Actions
+  new_user: Adding new user
   refinery:
     plugins:
       refinery_authentication_devise:

@@ -1,10 +1,47 @@
-<%= render 'refinery/admin/search_header', :url => refinery.authentication_devise_admin_users_path %>
+  <%= render 'refinery/admin/search_header', :url => refinery.authentication_devise_admin_users_path %>
+
 <% if @users.any? %>
-<div class='pagination_container'>
-  <%= render 'users' %>
-</div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><%= t('username') %></th>
+          <th><%= t('full_name') %></th>
+          <th><%= t('email') %></th>
+          <th><%= t('added_at') %></th>
+          <th class="text-right"><%= t('actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each_with_index do |user, index| %>
+          <% # setup params for various action links
+          edit_url ||=  refinery.edit_authentication_devise_admin_user_path(user)
+          delete_url ||= refinery.authentication_devise_admin_user_path(user)
+          delete_options ||= {
+            method: :delete,
+            class: "btn btn-sm icon btn-primary waves-effect",
+            data: {confirm: t('message',  scope: 'refinery.authentication.devise.delete', title: user.username)}
+          }
+        %>
+      <tr>
+        <th scope="row"><%= index+1 %></th>
+        <td><%= user.username %></td>
+        <td><%= user.full_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at.strftime("%d-%m-%Y") %></td>
+        <td class="text-right">
+          <%= mail_to user.email, '<i class="zmdi zmdi-email"></i>'.html_safe, class: "btn btn-sm icon btn-primary waves-effect" %>
+          <%= link_to '<i class="zmdi zmdi-edit"></i>'.html_safe, edit_url, class: "btn btn-sm icon btn-primary waves-effect" if current_refinery_user.can_edit?(user) %>
+          <%= link_to '<i class="zmdi zmdi-delete"></i>'.html_safe, delete_url, delete_options  if current_refinery_user.can_delete?(user) %>
+        </td>
+      </tr>
+    <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
-  <p>
-    <%= t('no_results', :scope => 'refinery.authentication.devise.admin.search') %>
-  </p>
+  <p> <%= t('no_results') %> </p>
 <% end %>
+
+

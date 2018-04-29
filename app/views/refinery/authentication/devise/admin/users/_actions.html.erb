@@ -1,7 +1,9 @@
-<ul>
-  <li><%= render '/refinery/admin/search', :url => refinery.authentication_devise_admin_users_path -%></li>
-  <li>
-    <%= link_to t('.create_new_user'),
-                refinery.new_authentication_devise_admin_user_path, :class => "add_icon" %>
-  </li>
-</ul>
+<% content_for :search do %>
+  <form class="searchbox">
+      <input type="search" placeholder="Search" name="search" class="searchbox-input">
+      <input type="submit" class="searchbox-submit" value="">
+      <span class="searchbox-icon" >
+        <span class="zmdi zmdi-search search-icon f-s-26 p-t-11" ></span></span>
+    </form>
+  <% end %>
+  <%= link_to t('.create_new_user'), refinery.new_authentication_devise_admin_user_path, :class => "btn btn-primary raised waves-effect add_icon m-t-50" %>

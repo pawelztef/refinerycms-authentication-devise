@@ -1,7 +1,7 @@
 <% content_for :header, t('login_to_continue') %>
 
 <%= form_for resource, :as => resource_name,
-  :url => refinery.authentication_devise_user_session_path do |f| %>
+  :url => refinery.authentication_devise_user_session_path, html: {class: 'm-t-40'} do |f| %>
   <div class='form-group'>
     <%# <%= f.label :login, class: "control-label"  %1> %>
     <%= f.text_field :login, :class => 'form-control', placeholder: t('login') %>
@@ -20,7 +20,7 @@
         <span class="white f-s-16 m-l-5">Remember me</span>
       <% end %>
       </div>
-      <%= link_to t('.forgot_password'), refinery.new_authentication_devise_user_password_path, class: 'pull-right f-s-16 white' %>
+      <%= link_to t('.forgot_password'), refinery.new_authentication_devise_user_password_path, class: 'pull-right f-s-16 m-r-10 white' %>
   </div>
   <button type="submit" class="btn btn-block btn-lg btn-primary"><%= t('.sign_in') %></button>
 <% end -%>
